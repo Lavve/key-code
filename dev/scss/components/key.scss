@@ -1,0 +1,81 @@
+.keys {
+  display: block;
+
+  &__wrapper {
+    width: 500px;
+    max-width: 90vw;
+  }
+
+  &__block {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__funcs {
+    .key {
+      text-transform: uppercase;
+      width: 33.333%;
+      padding: 1.2rem 2rem;
+      border-radius: 0.8rem;
+    }
+  }
+}
+
+.key {
+  background: #fff;
+  background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+  background-repeat: repeat;
+  backdrop-filter: blur(2rem);
+  padding: 2rem;
+  border-radius: 1.5rem;
+  flex: 1;
+  margin: 0.4rem;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-shadow: -1px -1px rgba(0, 0, 0, 0.2), 1px 1px rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0.15rem 0.5rem rgba(0, 0, 0, 0.2);
+  position: relative;
+  transition: all 0.23s;
+
+  &-copy {
+    cursor: copy;
+
+    &:hover {
+      transform: translateY(-0.3rem);
+      box-shadow: 0 0.3rem 1rem rgba(0, 0, 0, 0.5);
+    }
+
+    &.down {
+      transition: all 0.15s;
+      background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.6));
+      transform: translateY(-0.2rem);
+      box-shadow: 0 0.2rem 0.8rem rgba(0, 0, 0, 0.4);
+    }
+  }
+
+  &__label {
+    position: absolute;
+    text-transform: none;
+    top: 0.2rem;
+    left: 50%;
+    font-weight: 400;
+    transform: translateX(-50%);
+    color: #88a;
+    font-size: 1rem;
+    line-height: 1.2;
+    text-shadow: 0 0;
+  }
+
+  &__key {
+    text-transform: none;
+  }
+
+  &.on {
+    background: linear-gradient(to right bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.5));
+  }
+
+  &__code {
+    font-size: 2.2rem;
+  }
+}
