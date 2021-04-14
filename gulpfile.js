@@ -95,12 +95,19 @@ gulp.task('version', function () {
     .pipe(gulp.dest('./'));
 });
 
+gulp.task('html', function () {
+  return gulp
+    .src('./index.html')
+    .pipe(replace(/public\//g, ''))
+    .pipe(gulp.dest('./public/'));
+});
+
 gulp.task('watchers', function () {
   gulp.watch([conf.dev.css + '**/*.scss'], gulp.series(['version', 'styles']));
   gulp.watch([conf.dev.js + '**/*.js'], gulp.series(['version', 'scripts']));
   gulp.watch([conf.dev.fonts + '/**/*'], gulp.series(['fonts']));
 });
 
-gulp.task('default', gulp.series(['styles', 'scripts', 'version', 'fonts']));
-gulp.task('build', gulp.series(['styles', 'scripts', 'fonts', 'version']));
+gulp.task('default', gulp.series(['styles', 'scripts', 'fonts', 'version', 'html']));
+gulp.task('build', gulp.series(['styles', 'scripts', 'fonts', 'version', 'html']));
 gulp.task('watch', gulp.series('watchers'));
