@@ -1,15 +1,15 @@
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const path = require('path');
-const prod = process.argv[4] === 'production';
+const dev = process.argv[4] === 'development';
 
 config = {
-  mode: prod ? 'production' : 'development',
+  mode: dev ? 'development' : 'production',
   entry: ['./dev/js/App.js'],
   output: {
     path: path.resolve(__dirname, 'public/js/'),
     filename: 'scripts.js',
   },
-  devtool: !prod && 'eval-cheap-module-source-map',
+  devtool: dev && 'eval-cheap-module-source-map',
   module: {
     rules: [
       {

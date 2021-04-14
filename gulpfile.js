@@ -19,7 +19,7 @@ const concat = require('gulp-concat');
 const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
 
-const buildMode = process.argv.indexOf('--mode') !== -1 ? process.argv[4] : 'development';
+const dev = process.argv[4] === 'development';
 
 const conf = {
   dev: {
@@ -57,11 +57,11 @@ gulp.task(
   gulp.series('delete-css', function () {
     return gulp
       .src([conf.dev.css + 'styles.scss'])
-      .pipe(gulpif(buildMode !== 'production', sourcemaps.init({ loadMaps: true })))
+      .pipe(gulpif(dev, sourcemaps.init({ loadMaps: true })))
       .pipe(sass({ includePaths: ['scss'] }).on('error', sass.logError))
       .pipe(cleanCSS())
       .pipe(autoprefixer({}))
-      .pipe(gulpif(buildMode !== 'production', sourcemaps.write('.')))
+      .pipe(gulpif(dev, sourcemaps.write('.')))
       .pipe(gulp.dest(conf.pub.css));
   })
 );
