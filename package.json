@@ -5,6 +5,10 @@
   "author": "Magnus Claesson",
   "main": "gulpfile.js",
   "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
     "gulp watch (dev)": "gulp watch --mode development",
     "gulp build (dev)": "gulp build --mode development",
     "gulp deploy (prod)": "gulp build --mode production"
